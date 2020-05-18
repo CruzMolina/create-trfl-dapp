@@ -10,5 +10,9 @@
     "truffle"
   ],
   "author": "Cruz Molina",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "download-git-repo": "^3.0.2",
+    "yargs": "^15.3.1"
+  }
 }
