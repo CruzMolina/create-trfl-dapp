@@ -3,7 +3,6 @@ const fs = require("fs");
 const { promisify } = require("util");
 const download = require("download-git-repo");
 const githubDownload = promisify(download);
-const deleteFile = promisify(fs.unlink);
 
 module.exports = {
   processParams: async (projectLocation) => {
@@ -57,19 +56,20 @@ module.exports = {
       JSON.stringify(newPackageJSON, null, 2),
       "utf8"
     );
-
-    // delete unnecessary files
-    await deleteFile(join(projectPath, "LICENSE"));
   },
 
   notifyUser: async (projectPath, projectName) => {
     // notify user that the app is ready
-    console.log(`  \x1b[106mSUCCESS!\x1b[0m
+    console.log(`  \x1b[104mSUCCESS!\x1b[0m
 
   Created project \x1b[36m${projectName}\x1b[0m at \x1b[36m${projectPath}\x1b[0m
-  Navigate to that directory to start hacking
+  Navigate to that directory and run the following commands:
 
-  \x1b[35mEnjoy!\x1b[0m
+    1. \x1b[35mnpm install\x1b[0m or \x1b[35myarn\x1b[0m to install dependencies
+
+    2. \x1b[35mnpm start\x1b[0m or \x1b[35myarn start\x1b[0m to start developing
+
+  \x1b[33mEnjoy!\x1b[0m
 `);
   },
 };
