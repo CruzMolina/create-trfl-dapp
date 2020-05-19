@@ -8,7 +8,7 @@ const {
 } = require("./helpers");
 
 const templates = {
-  js: `CruzMolina/template-js`,
+  js: `CruzMolina/truffle-template-js`,
 };
 
 const main = async () => {
